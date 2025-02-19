@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WizardTD.MonsterTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-02-19T04:36:46" hostname="victor-pc" time="2.599">
+  <properties/>
+  <testcase name="testKill1()" classname="WizardTD.MonsterTest" time="0.345"/>
+  <testcase name="testKill2()" classname="WizardTD.MonsterTest" time="0.315"/>
+  <testcase name="testKill3()" classname="WizardTD.MonsterTest" time="0.3"/>
+  <testcase name="testBanish1()" classname="WizardTD.MonsterTest" time="0.841"/>
+  <testcase name="testBanish2()" classname="WizardTD.MonsterTest" time="0.513"/>
+  <testcase name="testDamage1()" classname="WizardTD.MonsterTest" time="0.283"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

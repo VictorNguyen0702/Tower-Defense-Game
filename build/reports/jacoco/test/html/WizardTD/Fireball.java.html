@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Fireball.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">Fireball.java</span></div><h1>Fireball.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+/**
+ * A subclass of the Projectile abstract class for the
+ * projectiles fired by shooter towers
+ */
+public class Fireball extends Projectile  implements MoveableObject {
+
+    private Monster target;
+
+    /**
+     * Creates an instance of the fireball class
+     * 
+     * @param x The x coordinate of the fireball's position
+     * @param y The y coordinate of the fireball's  position
+     * @param damage The damage of the fireball
+     * @param target The target of the fireball
+     */
+<span class="fc" id="L19">    public Fireball(int x, int y, double damage, Monster target) {</span>
+<span class="fc" id="L20">        this.x = x;</span>
+<span class="fc" id="L21">        this.y = y;</span>
+<span class="fc" id="L22">        this.damage = damage;</span>
+<span class="fc" id="L23">        this.speed = 5;</span>
+<span class="fc" id="L24">        this.target = target;</span>
+<span class="fc" id="L25">        this.active = true;</span>
+<span class="fc" id="L26">    }</span>
+
+    /**
+     * Move the fireball's x coordinate
+     * 
+     * @param pixels The number of pixels to move in the x direction
+     */
+    public void moveX(int pixels) {
+<span class="fc" id="L34">        this.x += pixels;</span>
+<span class="fc" id="L35">    }</span>
+
+    /**
+     * Move the fireball's y coordinate
+     * 
+     * @param pixels The number of pixels to move in the y direction
+     */
+    public void moveY(int pixels) {
+<span class="fc" id="L43">        this.y += pixels;</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * Retrieves the fireball's target
+     * 
+     * @return The target of the fireball
+     */
+    public Monster getTarget() {
+<span class="fc" id="L52">        return target;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

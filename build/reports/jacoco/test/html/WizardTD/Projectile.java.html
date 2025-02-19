@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Projectile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">Projectile.java</span></div><h1>Projectile.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+/**
+ * An abstract class for projectiles from towers
+ * to be created in game
+ */
+<span class="fc" id="L7">public abstract class Projectile {</span>
+    protected double speed;
+    protected double damage;
+    
+    protected int x;
+    protected int y;
+    protected boolean active;
+
+    /**
+     * Sets the projectile to inactive
+     */
+    public void setInactive() {
+<span class="fc" id="L19">        active = false;</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * Retrieves if the projectile is active
+     * 
+     * @return A boolean representing if the projectile is active
+     */
+    public boolean getActive() {
+<span class="fc" id="L28">        return active;</span>
+    }
+
+    /**
+     * Retrieves the projectile's x coordinate
+     * 
+     * @return The projectile's x coordinate
+     */
+    public int getX() {
+<span class="fc" id="L37">        return x;</span>
+    }
+
+    /**
+     * Retrieves the projectile's y coordinate
+     * 
+     * @return The projectile's y coordinate
+     */
+    public int getY() {
+<span class="fc" id="L46">        return y;</span>
+    }
+
+    /**
+     * Retrieves the projectile's damage
+     * 
+     * @return The projectile's damage
+     */
+    public double getDamage() {
+<span class="fc" id="L55">        return damage;</span>
+    }
+
+    /**
+     * Retrieves the projectile's speed
+     * 
+     * @return The projectile's speed
+     */
+    public double getSpeed() {
+<span class="fc" id="L64">        return speed;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WizardTD.ManaTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-02-19T04:36:45" hostname="victor-pc" time="0.903">
+  <properties/>
+  <testcase name="testGainMana1()" classname="WizardTD.ManaTest" time="0.222"/>
+  <testcase name="testManaPool1()" classname="WizardTD.ManaTest" time="0.225"/>
+  <testcase name="testRegen1()" classname="WizardTD.ManaTest" time="0.233"/>
+  <testcase name="testRegen2()" classname="WizardTD.ManaTest" time="0.219"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WizardTD.MousePressTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2025-02-19T04:36:48" hostname="victor-pc" time="3.478">
+  <properties/>
+  <testcase name="testMouseManaPoolSpell1()" classname="WizardTD.MousePressTest" time="0.215"/>
+  <testcase name="testMouseManaPoolSpell2()" classname="WizardTD.MousePressTest" time="0.216"/>
+  <testcase name="testMouseManaPoolSpell3()" classname="WizardTD.MousePressTest" time="0.229"/>
+  <testcase name="testMouseOutOfRange1()" classname="WizardTD.MousePressTest" time="0.215"/>
+  <testcase name="testMouseOutOfRange2()" classname="WizardTD.MousePressTest" time="0.222"/>
+  <testcase name="testMouseCreateTower1()" classname="WizardTD.MousePressTest" time="0.215"/>
+  <testcase name="testMouseCreateTower2()" classname="WizardTD.MousePressTest" time="0.214"/>
+  <testcase name="testMouseFastForward1()" classname="WizardTD.MousePressTest" time="0.213"/>
+  <testcase name="testMouseBuildShooter1()" classname="WizardTD.MousePressTest" time="0.212"/>
+  <testcase name="testMouseBuildShooter2()" classname="WizardTD.MousePressTest" time="0.212"/>
+  <testcase name="testMouseUpgrade1()" classname="WizardTD.MousePressTest" time="0.212"/>
+  <testcase name="testMouseUpgrade2()" classname="WizardTD.MousePressTest" time="0.213"/>
+  <testcase name="testMouseUpgrade3()" classname="WizardTD.MousePressTest" time="0.212"/>
+  <testcase name="testMousePause1()" classname="WizardTD.MousePressTest" time="0.224"/>
+  <testcase name="testMouseSprayer1()" classname="WizardTD.MousePressTest" time="0.222"/>
+  <testcase name="testMouseSprayer2()" classname="WizardTD.MousePressTest" time="0.219"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

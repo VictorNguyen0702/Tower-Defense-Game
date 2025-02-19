@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WizardTD.TowerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2025-02-19T04:36:52" hostname="victor-pc" time="2.23">
+  <properties/>
+  <testcase name="testCreateTower1()" classname="WizardTD.TowerTest" time="0.214"/>
+  <testcase name="testCreateTower2()" classname="WizardTD.TowerTest" time="0.212"/>
+  <testcase name="testCreateTower3()" classname="WizardTD.TowerTest" time="0.223"/>
+  <testcase name="testCreateTower4()" classname="WizardTD.TowerTest" time="0.219"/>
+  <testcase name="testCreateTower5()" classname="WizardTD.TowerTest" time="0.216"/>
+  <testcase name="testCreateTower6()" classname="WizardTD.TowerTest" time="0.214"/>
+  <testcase name="testTryShoot1()" classname="WizardTD.TowerTest" time="0.255"/>
+  <testcase name="testSetImg1()" classname="WizardTD.TowerTest" time="0.228"/>
+  <testcase name="testSetImg2()" classname="WizardTD.TowerTest" time="0.216"/>
+  <testcase name="testConstructor()" classname="WizardTD.TowerTest" time="0.225"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

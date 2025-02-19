@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tower.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">Tower.java</span></div><h1>Tower.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+/**
+ * An abstract class for towers to be created 
+ * in game
+ */
+<span class="fc" id="L7">public abstract class Tower {</span>
+
+    protected static int towerCost;
+    protected int range;
+    protected double firingSpeed;
+    protected double damage;
+
+    protected double baseDamage;
+
+<span class="fc" id="L16">    protected int rangeLvl = 0;</span>
+<span class="fc" id="L17">    protected int firingSpeedLvl = 0;</span>
+<span class="fc" id="L18">    protected int damageLvl = 0;</span>
+
+    protected double shotCooldown;
+    protected double shotCooling;
+
+    protected int[] coords;
+
+    protected String img;
+    
+    /**
+     * Increases the range level and range of the tower
+     */
+    public abstract void increaseRange();
+
+    /**
+     * Increases the firing speed level and firing speed of the tower
+     */
+    public abstract void increaseFiringSpeed();
+
+    /**
+     * Increases the damage level and damage of the tower
+     */
+    public abstract void increaseDamage();
+
+    /**
+     * Sets the image of the tower based on its level
+     */
+    public abstract void setImg();
+    
+    /**
+     * Sets the coordinates of the tower
+     * 
+     * @param col The column of the tower's coordinates
+     * @param row The row fo the tower's coordinates
+     */
+    public void set_coords(int col, int row) {
+<span class="fc" id="L54">        coords = new int[] {col, row};</span>
+<span class="fc" id="L55">    }</span>
+
+    /**
+     * Skips the cooling of the tower's shots
+     */
+    public void skipCooling() {
+<span class="fc" id="L61">        shotCooling = 0;</span>
+<span class="fc" id="L62">    }</span>
+    
+    /**
+     * Decreases the shot cooldown of the tower by 1
+     */
+    public void decreaseCooling() {
+<span class="fc" id="L68">        shotCooling -= 1;</span>
+<span class="fc" id="L69">    }</span>
+
+    /**
+     * Resets the shot cooldown of the tower
+     */
+    public void resetCooling() {
+<span class="fc" id="L75">        shotCooling = shotCooldown;</span>
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * Retrieves the current shot cooldown of the tower
+     * 
+     * @return The current shot cooldown of the tower
+     */
+    public double getCooling() {
+<span class="fc" id="L84">        return shotCooling;</span>
+    }
+
+    /**
+     * Retrieves the range level of the tower
+     * 
+     * @return The range level of the tower
+     */
+    public int getRangeLvl() {
+<span class="fc" id="L93">        return rangeLvl;</span>
+    }
+
+    /**
+     * Retrieves the firing speed level of the tower
+     * 
+     * @return The firing speed level of the tower
+     */
+    public int getFiringSpeedLvl() {
+<span class="fc" id="L102">        return firingSpeedLvl;</span>
+    }
+
+    /**
+     * Retrieves the damage level of the tower
+     * 
+     * @return The damage level of the tower
+     */
+    public int getDamageLvl() {
+<span class="fc" id="L111">        return damageLvl;</span>
+    }
+
+    /**
+     * Retrieves the cost to upgrade range of the tower
+     * 
+     * @return The cost to upgrade range of the tower
+     */
+    public int getRangeUpCost() {
+<span class="fc" id="L120">        return 20 + (rangeLvl) * 10;</span>
+    }
+
+    /**
+     * Retrieves the cost to upgrade firing speed of the tower
+     * 
+     * @return The cost to upgrade firing speed of the tower
+     */
+    public int getFiringSpeedUpCost() {
+<span class="fc" id="L129">        return 20 + (firingSpeedLvl) * 10;</span>
+    }
+
+    /**
+     * Retrieves the cost to upgrade damage of the tower
+     * 
+     * @return The cost to upgrade damage of the tower
+     */
+    public int getDamageUpCost() {
+<span class="fc" id="L138">        return 20 + (damageLvl) * 10;</span>
+    }
+
+    /**
+     * Retrieves the range of the tower
+     * 
+     * @return The range of the tower
+     */
+    public int getRange() {
+<span class="fc" id="L147">        return range;</span>
+    }
+
+    /**
+     * Retrieves the firing speed of the tower
+     * 
+     * @return The firing speed of the tower
+     */
+    public double getFiringSpeed() {
+<span class="fc" id="L156">        return firingSpeed;</span>
+    }
+
+    /**
+     * Retrieves the damage of the tower
+     * 
+     * @return The damage of the tower
+     */
+    public double getDamage() {
+<span class="fc" id="L165">        return damage;</span>
+    }
+
+    /**
+     * Retrieves the image type of the tower
+     * 
+     * @return The image type of the tower
+     */
+    public String getImg() {
+<span class="fc" id="L174">        return img;</span>
+    }
+    
+    /**
+     * Retrieves the location of the tower
+     * 
+     * @return The locationof the tower
+     */
+    public int[] getCoords() {
+<span class="fc" id="L183">        return coords;</span>
+    }
+
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

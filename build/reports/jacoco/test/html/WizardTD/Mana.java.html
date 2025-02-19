@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Mana.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">Mana.java</span></div><h1>Mana.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+import java.lang.Math;
+import processing.data.JSONObject;
+
+/**
+ * A class to be instantiated for the mana of the 
+ * player in game
+ */
+public class Mana {
+<span class="fc" id="L11">    private int manaPoolCount = 0;</span>
+
+    private double mana;
+    private double manaCap;
+
+    private double baseManaCap;
+    private double baseManaRegen;
+    private double regenCooldown;
+<span class="fc" id="L19">    private double regenCooling = 0;</span>
+
+    private int manaPoolCost;
+    private int manaPoolCostIncrease;
+    private double manaPoolCapMultiplier;
+    private double manaPoolRegenMultiplier;
+    
+
+    /**
+     * Creates an instance of the Mana class
+     * 
+     * @param config A JSONObject with the game data
+     */
+<span class="fc" id="L32">    public Mana(JSONObject config) {</span>
+        // Retrive mana data
+<span class="fc" id="L34">        this.mana = config.getInt(&quot;initial_mana&quot;);</span>
+<span class="fc" id="L35">        this.baseManaCap = config.getInt(&quot;initial_mana_cap&quot;);</span>
+<span class="fc" id="L36">        this.baseManaRegen = config.getInt(&quot;initial_mana_gained_per_second&quot;);</span>
+<span class="fc" id="L37">        this.manaCap = baseManaCap;</span>
+<span class="fc" id="L38">        this.regenCooldown = 60 / baseManaRegen;</span>
+
+
+        // Retrieves mana pool spell data
+<span class="fc" id="L42">        this.manaPoolCost = config.getInt(&quot;mana_pool_spell_initial_cost&quot;);</span>
+<span class="fc" id="L43">        this.manaPoolCostIncrease = config.getInt(&quot;mana_pool_spell_cost_increase_per_use&quot;);</span>
+<span class="fc" id="L44">        this.manaPoolCapMultiplier = config.getDouble(&quot;mana_pool_spell_cap_multiplier&quot;);</span>
+<span class="fc" id="L45">        this.manaPoolRegenMultiplier = config.getDouble(&quot;mana_pool_spell_mana_gained_multiplier&quot;);</span>
+
+
+<span class="fc" id="L48">    }</span>
+
+    /**
+     * Increases the wizard mana by 1
+     */
+    public void regenOneMana() {
+<span class="fc" id="L54">        mana += 1;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (mana &gt;= manaCap) {</span>
+<span class="fc" id="L56">            mana = manaCap;</span>
+        }
+<span class="fc" id="L58">    }</span>
+
+    /**
+     * Decreases the regen cooling by 1
+     */
+    public void decreaseCooling() {
+<span class="fc" id="L64">        regenCooling -= 1;</span>
+<span class="fc" id="L65">    }</span>
+
+    /**
+     * Resets the regen cooling
+     */
+    public void resetCooling() {
+<span class="fc" id="L71">        regenCooling = regenCooldown;</span>
+<span class="fc" id="L72">    }</span>
+
+    /**
+     * Retrieves the current regen cooling
+     * 
+     * @return The current regen cooling
+     */
+    public double getCooling() {
+<span class="fc" id="L80">        return regenCooling;</span>
+    }
+
+    /**
+     * Increases the mana by a certain amount and
+     * accounts for the mana gain multiplier
+     * 
+     * @param baseManaGain the mana gained without consideration for multiplier
+     */
+    public void gainMana(double baseManaGain) {
+<span class="fc" id="L90">        double manaGainMultiplier = 1 + (manaPoolCount * (manaPoolRegenMultiplier - 1));</span>
+<span class="fc" id="L91">        mana += (baseManaGain * manaGainMultiplier);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (mana &gt;= manaCap) {</span>
+<span class="fc" id="L93">            mana = manaCap; // sets it to the cap if it is about to go over</span>
+        }
+<span class="fc" id="L95">    }</span>
+
+    /**
+     * Decreases the mana by a certain amount
+     * 
+     * @param manaCost The amount of mana to be lost
+     */
+    public void loseMana(double manaCost) {
+<span class="fc" id="L103">        mana -= manaCost;</span>
+<span class="fc" id="L104">    }</span>
+    
+    /**
+     * Sets the mana to a certain amount
+     * 
+     * @param newMana The new mana to be set
+     */
+    public void setMana(double newMana) {
+<span class="fc" id="L112">        mana = newMana;</span>
+<span class="fc" id="L113">    }</span>
+
+    /**
+     * Retrieves the current mana
+     * 
+     * @return The current mana
+     */
+    public double getMana() {
+<span class="fc" id="L121">        return mana;</span>
+    }
+
+    /**
+     * Retrieves the mana cap
+     * 
+     * @return The mana cap
+     */
+    public double getManaCap() {
+<span class="fc" id="L130">        return manaCap;    </span>
+    }
+
+    /**
+     * Retrieves the number of mana pool spells activated
+     * 
+     * @return The number of mana pool spells activated
+     */
+    public int getManaPoolCount() {
+<span class="fc" id="L139">        return manaPoolCount;</span>
+    }
+
+    /**
+     * Attempts to create a mana pool spell if there is enough 
+     * mana and updates the regen speed and mana cap
+     */
+    public void tryCreateManaPool() {
+<span class="fc" id="L147">        double spellCost = (manaPoolCost + (manaPoolCount * manaPoolCostIncrease));</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">        if (mana &gt;= spellCost) {</span>
+<span class="fc" id="L149">            mana -= spellCost;</span>
+<span class="fc" id="L150">            manaPoolCount += 1;</span>
+<span class="fc" id="L151">            double manaGainMultiplier = 1 + (manaPoolCount * (manaPoolRegenMultiplier - 1));</span>
+<span class="fc" id="L152">            regenCooldown = 60 / (baseManaRegen * manaGainMultiplier);</span>
+<span class="fc" id="L153">            double manaCapMultiplier = Math.pow(manaPoolCapMultiplier, manaPoolCount);</span>
+<span class="fc" id="L154">            manaCap = baseManaCap * manaCapMultiplier;</span>
+        }
+<span class="fc" id="L156">    }</span>
+
+    /**
+     * Retrieves the mana pool spell cost
+     * 
+     * @return The mana pool spell cost
+     */
+    public double getSpellCost() {
+<span class="fc" id="L164">        double spellCost = (manaPoolCost + (manaPoolCount * manaPoolCostIncrease));</span>
+<span class="fc" id="L165">        return spellCost;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

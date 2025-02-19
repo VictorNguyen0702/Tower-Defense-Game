@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TileNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">TileNode.java</span></div><h1>TileNode.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+/**
+ * A class to be instantiated for each 
+ * tile of the pathway in the map
+ */
+public class TileNode {
+    public int col;
+    public int row;
+    public int cost;
+    TileNode parent;
+    
+    /**
+     * Creates an instance of the tile node
+     * 
+     * @param col Column of the tile node
+     * @param row Row of the tile node
+     * @param cost How many tiles from the start to the tile node
+     * @param parent The tile node before this tile node in the pathway
+     */
+<span class="fc" id="L21">    TileNode(int col, int row, int cost, TileNode parent) {</span>
+<span class="fc" id="L22">        this.col = col;</span>
+<span class="fc" id="L23">        this.row = row;</span>
+<span class="fc" id="L24">        this.cost = cost;</span>
+<span class="fc" id="L25">        this.parent = parent;</span>
+<span class="fc" id="L26">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

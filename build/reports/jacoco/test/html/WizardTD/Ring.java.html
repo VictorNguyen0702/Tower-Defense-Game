@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ring.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">Ring.java</span></div><h1>Ring.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+import java.util.ArrayList;
+
+/**
+ * A subclass of the Projectile abstract class for the
+ * projectiles fired by sprayer towers
+ */
+public class Ring extends Projectile {
+
+    private int size;
+    public int range;
+<span class="fc" id="L13">    private ArrayList&lt;Monster&gt; targetsHit = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Creates an instance of the ring class
+     * 
+     * @param x The x coordinate of the ring's start position
+     * @param y The y coordinate of the ring's start position
+     * @param damage The damage of the ring
+     * @param range The range of the ring
+     */
+<span class="fc" id="L23">    public Ring(int x, int y, double damage, int range) {</span>
+<span class="fc" id="L24">        this.x = x;</span>
+<span class="fc" id="L25">        this.y = y;</span>
+<span class="fc" id="L26">        this.damage = damage;</span>
+<span class="fc" id="L27">        this.speed = 5;</span>
+<span class="fc" id="L28">        this.active = true;</span>
+<span class="fc" id="L29">        this.range = range;</span>
+<span class="fc" id="L30">        this.size = 0;</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Get the range of the ring
+     * 
+     * @return The range of the ring
+     */
+    public int getRange() {
+<span class="fc" id="L39">        return range;</span>
+    }
+
+    /**
+     * Increases the current size of the ring
+     */
+    public void increaseSize() {
+<span class="fc" id="L46">        size += speed;</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * Retrieves the size of the ring
+     * 
+     * @return The size of the ring
+     */
+    public int getSize() {
+<span class="fc" id="L55">        return size;</span>
+    }
+
+    /**
+     * Adds a monster to the ring's list of targets hit
+     * 
+     * @param monster The monster that the ring hit
+     */
+    public void addTargetHit(Monster monster) {
+<span class="fc" id="L64">        targetsHit.add(monster);  </span>
+<span class="fc" id="L65">    }</span>
+
+    /**
+     * Checks if a monster has been hit by the ring already
+     * 
+     * @param monster A monster to check if it has been hit
+     * @return A boolean representing if a monster has been hit already
+     */
+    public boolean checkHit(Monster monster) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (targetsHit.contains(monster)) {</span>
+<span class="fc" id="L75">            return true;</span>
+        } else {
+<span class="fc" id="L77">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

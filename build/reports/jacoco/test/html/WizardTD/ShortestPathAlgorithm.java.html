@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShortestPathAlgorithm.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment</a> &gt; <a href="index.source.html" class="el_package">WizardTD</a> &gt; <span class="el_source">ShortestPathAlgorithm.java</span></div><h1>ShortestPathAlgorithm.java</h1><pre class="source lang-java linenums">package WizardTD;
+
+import java.util.*;
+
+
+/**
+ * A class to find the shortest path between a start and end point
+ * using Dijkstra's Algorithm
+ * Source: https://stackoverflow.com/questions/12887921/shortest-path-in-a-2d-array-using-dijkstras-algorithm 
+ */
+public class ShortestPathAlgorithm {
+
+    private char[][] layout;
+    private ArrayList&lt;ArrayList&lt;int[]&gt;&gt; pathwayList;
+    private ArrayList&lt;int[]&gt; startPoints;
+    private int[] endPoint;
+
+    /**
+     * Creates an instance of the ShortestPathAlgorithm class
+     * 
+     * @param layout A char array that represents the map of the level
+     */
+<span class="fc" id="L23">    public ShortestPathAlgorithm(char[][] layout) {</span>
+<span class="fc" id="L24">        this.layout = layout;</span>
+<span class="fc" id="L25">        pathwayList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L26">        findStarts();</span>
+<span class="fc" id="L27">        findEnd();</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int[] startPoint : startPoints) {</span>
+<span class="fc" id="L29">            ArrayList&lt;int[]&gt; pathway = findShortestPath(startPoint[0], startPoint[1], endPoint[0], endPoint[1]);</span>
+<span class="fc" id="L30">            pathwayList.add(pathway);</span>
+<span class="fc" id="L31">        }</span>
+<span class="fc" id="L32">    }</span>
+
+    /**
+     * Uses the layout to find all the start points 
+     * connected to the edge of the map
+     */
+    public void findStarts() {
+        // finds the start points
+<span class="fc" id="L40">        startPoints = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        for (int row = 0; row &lt; layout.length; row++) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            for (int col = 0; col &lt; layout[row].length; col++) {</span>
+<span class="fc bfc" id="L44" title="All 10 branches covered.">                if (layout[row][col] == 'X' &amp;&amp; </span>
+                (row == 0 || row == layout.length - 1 || col == 0 || col == layout[row].length - 1)) {
+<span class="fc" id="L46">                    startPoints.add(new int[] {col, row});</span>
+                }
+            }
+        }
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * Uses the layout to find the end point where the
+     * wizard house is
+     */
+    public void findEnd() {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for (int row = 0; row &lt; layout.length; row++) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">            for (int col = 0; col &lt; layout[row].length; col++) {</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                if (layout[row][col] == 'W') {</span>
+<span class="fc" id="L60">                    endPoint = new int[] {col, row};</span>
+                }
+            }
+        }
+<span class="fc" id="L64">    }</span>
+
+    /**
+     * Finds the shortest path from a start point to an end point and also adds
+     * in the spawn point outside the map
+     * 
+     * @param startCol The column of the starting point
+     * @param startRow The row of the starting point
+     * @param endCol The column of the end point
+     * @param endRow The row of the end point
+     * @return An arraylist with the tiles of the shortest path
+     */
+    public ArrayList&lt;int[]&gt; findShortestPath(int startCol, int startRow, int endCol, int endRow) {
+        
+<span class="fc" id="L78">        boolean[][] visited = new boolean[20][20];</span>
+
+        int[] spawnPoint;
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (startRow == 0) { </span>
+<span class="fc" id="L82">            spawnPoint = new int[] {startCol, startRow - 1};</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        } else if (startRow == layout.length - 1) {</span>
+<span class="fc" id="L84">            spawnPoint = new int[] {startCol, startRow + 1};</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        } else if (startCol == 0) {</span>
+<span class="fc" id="L86">            spawnPoint = new int[] {startCol - 1, startRow};</span>
+        } else // if(startCol == layout[startRow].length - 1) {
+<span class="fc" id="L88">            spawnPoint = new int[] {startCol + 1, startRow};</span>
+
+<span class="fc" id="L90">        Comparator&lt;TileNode&gt; costComparator = Comparator.comparingInt(node -&gt; node.cost);</span>
+<span class="fc" id="L91">        PriorityQueue&lt;TileNode&gt; queue = new PriorityQueue&lt;&gt;(costComparator);</span>
+        
+<span class="fc" id="L93">        TileNode start = new TileNode(startCol, startRow, 0, null);</span>
+<span class="fc" id="L94">        queue.add(start);</span>
+        
+<span class="fc" id="L96">        int[][] directions = new int[][] {{1, 0}, {-1, 0}, {0, 1}, {0, -1}}; // 4 different directions to move</span>
+
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        while (!queue.isEmpty()) {</span>
+<span class="fc" id="L99">            TileNode current = queue.poll();</span>
+<span class="fc" id="L100">            int col = current.col;</span>
+<span class="fc" id="L101">            int row = current.row;</span>
+
+<span class="fc bfc" id="L103" title="All 4 branches covered.">            if (col == endCol &amp;&amp; row == endRow) {</span>
+<span class="fc" id="L104">                ArrayList&lt;int[]&gt; path = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">                while (current != null) {</span>
+<span class="fc" id="L106">                    int[] currentCoords = {current.col, current.row};</span>
+<span class="fc" id="L107">                    path.add(currentCoords);</span>
+<span class="fc" id="L108">                    current = current.parent;</span>
+<span class="fc" id="L109">                }</span>
+<span class="fc" id="L110">                path.add(spawnPoint);</span>
+<span class="fc" id="L111">                Collections.reverse(path);</span>
+<span class="fc" id="L112">                return path;</span>
+            }
+
+<span class="fc" id="L115">            visited[row][col] = true;</span>
+
+<span class="fc bfc" id="L117" title="All 2 branches covered.">            for (int[] dir : directions) {</span>
+<span class="fc" id="L118">                int newCol = col + dir[0];</span>
+<span class="fc" id="L119">                int newRow = row + dir[1];</span>
+
+<span class="fc bfc" id="L121" title="All 6 branches covered.">                if (validTile(newCol, newRow) &amp;&amp; !visited[newRow][newCol] &amp;&amp; isPath(newCol, newRow)) {</span>
+<span class="fc" id="L122">                    int newCost = current.cost + 1;</span>
+<span class="fc" id="L123">                    queue.add(new TileNode(newCol, newRow, newCost, current));</span>
+                }
+            }
+<span class="fc" id="L126">        }</span>
+
+<span class="nc" id="L128">        return null;</span>
+    }
+
+    /**
+     * Checks if a tile is within the ranges of the map
+     * 
+     * @param col The column of the tile
+     * @param row The row of the tile
+     * @return A boolean representing if it is within the boundaries or not
+     */
+    private boolean validTile(int col, int row) {
+<span class="fc bfc" id="L139" title="All 8 branches covered.">        return (row &gt;= 0 &amp;&amp; row &lt; 20) &amp;&amp; (col &gt;= 0 &amp;&amp; col &lt; 20);</span>
+    }
+
+    /**
+     * Checks if a tile is a path or the wizard house
+     * 
+     * @param col The column of the tile
+     * @param row The row of the tile
+     * @return A boolean representing if it is a path or the wizard house
+     */
+    private boolean isPath(int col, int row) {
+<span class="fc bfc" id="L150" title="All 4 branches covered.">        return (layout[row][col] == 'X' || layout[row][col] == 'W');</span>
+    }
+
+    /**
+     * Retrieves a list of the pathways from all the start points to the end point
+     * 
+     * @return A list of the pathways from all the different start points to the end point
+     */
+    public ArrayList&lt;ArrayList&lt;int[]&gt;&gt; getPathwayList() {
+<span class="fc" id="L159">        return this.pathwayList;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

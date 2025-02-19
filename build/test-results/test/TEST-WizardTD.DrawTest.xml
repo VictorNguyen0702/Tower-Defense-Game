@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WizardTD.DrawTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2025-02-19T04:36:39" hostname="victor-pc" time="2.922">
+  <properties/>
+  <testcase name="testTowerRangeHover1()" classname="WizardTD.DrawTest" time="0.4"/>
+  <testcase name="testDrawLayout1()" classname="WizardTD.DrawTest" time="0.254"/>
+  <testcase name="testDrawLayout2()" classname="WizardTD.DrawTest" time="0.227"/>
+  <testcase name="testDrawLayout3()" classname="WizardTD.DrawTest" time="0.256"/>
+  <testcase name="testDrawLayout4()" classname="WizardTD.DrawTest" time="0.24"/>
+  <testcase name="testPauseDraw1()" classname="WizardTD.DrawTest" time="0.237"/>
+  <testcase name="testDrawTower1()" classname="WizardTD.DrawTest" time="0.213"/>
+  <testcase name="testTowerUpgradeHover1()" classname="WizardTD.DrawTest" time="0.216"/>
+  <testcase name="testTowerUpgradeHover2()" classname="WizardTD.DrawTest" time="0.213"/>
+  <testcase name="testButtonHover1()" classname="WizardTD.DrawTest" time="0.217"/>
+  <testcase name="testButtonHover2()" classname="WizardTD.DrawTest" time="0.222"/>
+  <testcase name="testButtonHover3()" classname="WizardTD.DrawTest" time="0.215"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
